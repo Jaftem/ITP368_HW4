@@ -23,10 +23,7 @@ Program will be an Ice Cream Shop.
 'Controllers'
 * IceCreamShop
 * Order
-* PurchasableItems -> snow cone, sundae, ice cream
-
-
-
+* PurchasableItems -> SnowCone, Sundae, IceCream
 
 ### Design Paterns
 
