@@ -11,6 +11,22 @@ Program will be an Ice Cream Shop.
 * Enums : size or sugar free, fat free, etc.
 * Exception handling: Reading in from file all menu items + types.
 
+### Classes
+
+'View'
+* InputHelper
+
+'Model'
+* FileReader
+* Enums -> size, containers (cone vs cup, etc)
+
+'Controllers'
+* IceCreamShop
+* Order
+* PurchasableItems -> snow cone, sundae, ice cream
+
+
+
 
 ### Design Paterns
 
