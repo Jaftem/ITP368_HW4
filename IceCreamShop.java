@@ -9,17 +9,18 @@ public class IceCreamShop {
     public IceCreamShop() {
         menu = new Menu(MENU_FILENAME);
         shopUI = new ConsoleShopUI();
+        shopUI.displayMessage("Welcome to Ice Cream Shop!");
     }
 
     public static void main(String[] args) {
         IceCreamShop ics = new IceCreamShop();
-        System.out.println("Welcome to Ice Cream Shop!");
         ics.askForAction();
     }
     public void askForAction() {
         boolean done = false;
         while(!done) {
-            int actionID = shopUI.promptUserForInteger(ShopActions.getMenu());
+            shopUI.displayMenu(ShopActions.getMenu());
+            int actionID = shopUI.promptUserForInteger("Please input a number from the menu.");
             switch(ShopActions.values()[actionID-1]) {
                 case ICECREAM:
                     System.out.println("buy icecream");
