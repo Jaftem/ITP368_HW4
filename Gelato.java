@@ -1,6 +1,7 @@
 import java.util.List;
 
 public class Gelato extends Item {
+	protected static int madeGelatos = 0;
 	protected final static double GELATO_BASE_PRICE    = 1.50;
 	protected final static double LOW_BUTTERFAT_PRICE  =  .25;
 	protected final static double ITALIAN_PRICE        = 1.00;
@@ -28,7 +29,8 @@ public class Gelato extends Item {
 		this.isItalianImported = isItalianImported;
 		this.flavor = flavor;
 	}
-	
+
+	// Getters
 	@Override
 	public double getPrice() {
 		double runningPrice = 0;
@@ -49,8 +51,23 @@ public class Gelato extends Item {
 		return ITALIAN_PRICE;
 	}
 
+	// Setters
+	public void setLowButterat(boolean hasLowButterfat) {
+		this.hasLowButterfat = hasLowButterfat;
+	}
+	
+	public void setItalianImported(boolean isItalianImported) {
+		this.isItalianImported = isItalianImported;
+	}
+	
 	// TODO:
 	public String toString() {
 		return "";
+	}
+	
+	// Potential factory?
+	public Gelato make(Size size, List<Type> types, boolean hasLowButterfat, boolean isItalianImported, FruitFlavor flavor) {
+		madeGelatos++; // purpose of factory is to have control over instantiation of object so we can do things like this
+		return new Gelato(size, types, hasLowButterfat, isItalianImported, flavor);
 	}
 }
