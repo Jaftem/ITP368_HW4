@@ -51,6 +51,11 @@ public class ConsoleShopUI implements ShopUI {
         System.out.println(message);
     }
 
+    @Override
+    public void displayMenu(String menu) {
+        System.out.println(menu); //gonna be this simple for console absed output
+    }
+
     private String grabInput(String prompt) {
         System.out.println(prompt);
         return sc.nextLine();

@@ -23,8 +23,8 @@ public class Gelato extends Item {
 		this.flavor = flavor;
 	}
 	
-	public Gelato(Size size, List<Type> types, boolean hasLowButterfat, boolean isItalianImported, FruitFlavor flavor) {
-		super(size, types);
+	public Gelato(Size size, Container container, List<Type> types, boolean hasLowButterfat, boolean isItalianImported, FruitFlavor flavor) {
+		super(size, types, container);
 		this.hasLowButterfat = hasLowButterfat;
 		this.isItalianImported = isItalianImported;
 		this.flavor = flavor;
@@ -62,12 +62,7 @@ public class Gelato extends Item {
 	
 	// TODO:
 	public String toString() {
-		return "";
+		return "Gelato " + size.name() + " " + container.name() + " " + types.toString() + " " + flavor.name();
 	}
 	
-	// Potential factory?
-	public Gelato make(Size size, List<Type> types, boolean hasLowButterfat, boolean isItalianImported, FruitFlavor flavor) {
-		madeGelatos++; // purpose of factory is to have control over instantiation of object so we can do things like this
-		return new Gelato(size, types, hasLowButterfat, isItalianImported, flavor);
-	}
 }

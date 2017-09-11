@@ -4,8 +4,7 @@
 // aftem@usc.edu
 
 public enum Size {
-	SMALL_BOWL (4.25, 10), MEDIUM_BOWL (6.00, 20),  LARGE_BOWL (7.75, 35),
-	SMALL_CONE (4.25, 8),  MEDIUM_CONE (6.00, 15),  LARGE_CONE (7.75, 25);
+	SMALL (4.25, 10), MEDIUM (6.00, 20),  LARGE(7.75, 35);
 	private final double price;
 	private final int ounces;
 	private Size(double price, int ounces) {

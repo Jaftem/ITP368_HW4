@@ -8,8 +8,8 @@ public class IceCream extends Item {
 		super();
 	}
 	
-	public IceCream(Size size, List<Type> types, TraditionalFlavor flavor) {
-		super(size, types);
+	public IceCream(Size size, Container container, List<Type> types, TraditionalFlavor flavor) {
+		super(size, types, container);
 		this.flavor = flavor;
 	}
 
@@ -30,11 +30,7 @@ public class IceCream extends Item {
 	
 	// TODO: 
 	public String toString() {
-		return "";
+		return "Ice Cream " + size.name() + " " + container.name() + " " + types.toString() + " " + flavor.name();
 	}
-	
-	public IceCream make(Size size, List<Type> types, TraditionalFlavor flavor) {
-		madeIceCream++;
-		return new IceCream(size, types, flavor);
-	}
+
 }

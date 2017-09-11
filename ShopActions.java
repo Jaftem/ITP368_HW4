@@ -1,9 +1,9 @@
 public enum ShopActions {
-	ICECREAM("Order Ice Cream"),
+	BUY("Order Something"),
 	VIEW("View order"),
 	CANCEL("Cancel current order"),
     PAY("Finish order and pay"),
-    QUIT("Leave the shop");
+    QUIT("Close the shop for the day (quit program)");
 
 	private String description;
 	private ShopActions(String description){

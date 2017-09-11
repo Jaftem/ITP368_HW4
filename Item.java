@@ -11,15 +11,17 @@ public abstract class Item {
 	protected Size size;
 	protected List<Type> types;
 	protected List<Topping> toppings;
+	protected Container container;
 	
 	// Constructor
 	public Item() {
 		toppings = new ArrayList<Topping>();
 	}
 	
-	public Item(Size size, List<Type> types) {
+	public Item(Size size, List<Type> types, Container container) {
 		this.size = size;
 		this.types = types;
+		this.container = container;
 	}
 	
 	public Item(double price) {
