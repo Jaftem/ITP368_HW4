@@ -38,7 +38,7 @@ public class Gelato extends Item {
 	}
 	
 	public double getBasePrice() {
-		return GELATO_	BASE_PRICE;
+		return GELATO_BASE_PRICE;
 	}
 	
 	public double getButterfatPrice() {
