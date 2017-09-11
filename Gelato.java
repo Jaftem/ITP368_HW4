@@ -62,7 +62,14 @@ public class Gelato extends Item {
 	
 	// TODO:
 	public String toString() {
-		return "Gelato " + size.name() + " " + container.name() + " " + types.toString() + " " + flavor.name();
+		String butterfat = hasLowButterfat ? "low butter fat" : "normal fat";
+		String imported = isItalianImported ? "Italian imported" : "not imported";
+		return "Gelato " + size.name() + ", " 
+		                 + container.name() + ", " 
+						 + types.toString() + ", " 
+						 + butterfat + ", " 
+						 + imported + ", " 
+						 + flavor.name();
 	}
 	
 }

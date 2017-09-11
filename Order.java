@@ -19,6 +19,10 @@ public class Order {
         return sum;
     }
 
+    public int getSize() {
+        return items.size();
+    }
+    
     public String toString() {
         String str = "";
         for(Item i : items) {

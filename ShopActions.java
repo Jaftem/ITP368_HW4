@@ -2,8 +2,7 @@ public enum ShopActions {
 	BUY("Order Something"),
 	VIEW("View order"),
 	CANCEL("Cancel current order"),
-    PAY("Finish order and pay"),
-    QUIT("Close the shop for the day (quit program)");
+    PAY("Finish order and pay");
 
 	private String description;
 	private ShopActions(String description){

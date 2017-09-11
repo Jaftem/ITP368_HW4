@@ -30,7 +30,10 @@ public class IceCream extends Item {
 	
 	// TODO: 
 	public String toString() {
-		return "Ice Cream " + size.name() + " " + container.name() + " " + types.toString() + " " + flavor.name();
+		return "Ice Cream " + size.name() + ", " 
+							+ container.name() + ", " 
+							+ types.toString() + ", " 
+							+ flavor.name();
 	}
 
 }

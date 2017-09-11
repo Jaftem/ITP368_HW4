@@ -35,23 +35,20 @@ public class IceCreamShop {
                         viewOrder(order);
                         break;
                     case CANCEL:
-                        System.out.println("Your order has been cancelled. See you next time!");
+                        shopUI.displayMessage("Your order has been cancelled. See you next time!");
                         customerDone = true;
                         break;
                     case PAY:
                         System.out.println("Your order total is []. Thanks for shopping with us!");
                         customerDone = true;
                         break;
-                    case QUIT:
-                        closeShop();
-                        customerDone = true;
-                        shopClosed = true;
-                        break;
                 }
             }
             //customer has finished ordering, put in history
-            orderHistory.put(currentCustomer, order);            
+            orderHistory.put(currentCustomer, order);     
+            shopClosed = !continueSelling(); //if want to continue, dont close shop    
         }
+        closeShop();
     }
 
     public Item askForItem() {
@@ -64,7 +61,7 @@ public class IceCreamShop {
             i = askForIceCream();
         } 
         else {
-            //i = askForGelato();
+            i = askForGelato();
         }
         return i;
     }
@@ -77,9 +74,15 @@ public class IceCreamShop {
         return new IceCream(size, container, types, flavor);
     }
 
-    // public Gelato askForGelato() {
-        
-    // }
+    public Gelato askForGelato() {
+        Size size = askForEnumOption(Size.class);
+        Container container = askForEnumOption(Container.class);
+        List<Type> types = askForTypes();
+        boolean hasLowButterfat = shopUI.promptUserForBoolean("Do you want low butter fat?");
+        boolean isItalianImported = shopUI.promptUserForBoolean("Do you want our special Italian imported mix?");
+        FruitFlavor flavor = askForEnumOption(FruitFlavor.class);
+        return new Gelato(size, container, types, hasLowButterfat, isItalianImported, flavor);     
+    }
 
     public void viewOrder(Order order) {
         shopUI.displayMessage("Your order looks like this:");
@@ -89,17 +92,39 @@ public class IceCreamShop {
     public void closeShop() {
         shopUI.displayMessage("The shop is now closed!");
         shopUI.displayMessage("Here are all the transactions made today!");
-        shopUI.displayMessage(orderHistory.toString());        
+        shopUI.displayMessage(prettyOrderHistoryString());       
     }
+
+    public boolean continueSelling() {
+        return shopUI.promptUserForBoolean("Shall we take another customer today?");
+    }
+
+    private String prettyOrderHistoryString() {
+        String str = "";
+        for(Map.Entry<String, Order> entry : orderHistory.entrySet()) {
+            String shopper = entry.getKey();
+            Order order = entry.getValue();
+            if(order.getSize() == 0) {
+                str += "Shopper " + shopper + " didn't get anything!\n";
+            }
+            else {
+                str += "Shopper " + shopper + " bought: \n";
+                str += order.toString();
+            }
+            str += "----------------------\n"; //separate each shopper
+        }
+        return str;
+    }
+
     public <E extends Enum<E>> E askForEnumOption(Class<E> enumType) {
         boolean done = false;
         E option = null;
         while(!done) {
             shopUI.displayMessage("********************");
             for (E val : enumType.getEnumConstants()){
-                shopUI.displayMessage(val.name());
+                shopUI.displayMessage(val.name().toLowerCase().replace("_", " "));
             }
-            String input = shopUI.promptUserForString("Please select a " + enumType.getName().toLowerCase().replace('_', ' ') + " from the list above!");
+            String input = shopUI.promptUserForString("Please select a " + enumType.getName() + " from the list above!");
             try {
                 option = Enum.valueOf(enumType, input.toUpperCase().replace(' ', '_'));
                 done = true;
