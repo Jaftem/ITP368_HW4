@@ -22,12 +22,13 @@ public class Order {
     public int getSize() {
         return items.size();
     }
-    
+
     public String toString() {
         String str = "";
         for(Item i : items) {
-            str += i.toString() + "\n";
+            str += i.toString() + String.format(" for $%.2f", i.getPrice()) + "\n";
         }
+        str += String.format("Total: $%.2f", calculatePrice()) + "\n";
         return str;
     }
 }

@@ -15,17 +15,13 @@ public abstract class Item {
 	
 	// Constructor
 	public Item() {
-		toppings = new ArrayList<Topping>();
 	}
 	
 	public Item(Size size, List<Type> types, Container container) {
 		this.size = size;
 		this.types = types;
 		this.container = container;
-	}
-	
-	public Item(double price) {
-		this.price = price;
+		toppings = new ArrayList<Topping>();		
 	}
 	
 	// Getters
@@ -50,6 +46,8 @@ public abstract class Item {
 			runningPrice += t.getPrice();
 		}
 		runningPrice += toppings.size() * Topping.PRICE_PER_TOPPING;
+		runningPrice += size.getPrice();
+		runningPrice += container.getPrice();//wow this looks really expensive
 		return runningPrice;
 	}
 

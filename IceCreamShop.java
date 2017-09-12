@@ -3,12 +3,12 @@ import java.util.*;
 import javax.management.modelmbean.ModelMBean;
 
 public class IceCreamShop {
-    private static final String MENU_FILENAME = "../menu.txt"; //currently configured to run from bin folder
-    private Menu menu;
+    //private static final String MENU_FILENAME = "../menu.txt"; //currently configured to run from bin folder
+    //private Menu menu;
     private ShopUI shopUI;
     private Map<String, Order> orderHistory;
     public IceCreamShop() {
-        menu = new Menu(MENU_FILENAME);
+        //menu = new Menu(MENU_FILENAME);
         shopUI = new ConsoleShopUI();
         orderHistory = new HashMap<>();
         shopUI.displayMessage("Welcome to Ice Cream Shop!");
@@ -39,7 +39,8 @@ public class IceCreamShop {
                         customerDone = true;
                         break;
                     case PAY:
-                        System.out.println("Your order total is []. Thanks for shopping with us!");
+                        viewOrder(order);
+                        shopUI.displayMessage("Thanks for shopping with us!");                        
                         customerDone = true;
                         break;
                 }
@@ -162,9 +163,5 @@ public class IceCreamShop {
             }
         }
         return types;
-    }
-
-    public void createItem(Item i) {
-        
     }
 }
